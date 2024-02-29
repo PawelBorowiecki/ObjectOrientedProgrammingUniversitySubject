@@ -30,7 +30,7 @@ public class Segment {
 
         //return new Segment(p, new Point(p.x - dx, p.y - dy));
         return new Segment[]{
-                new Segment(p, new Point(p.x - dy, p.y - dx)), new Segment(p, new Point(p.x + dy, p.y + dy))
+                new Segment(p, new Point(p.x - dy, p.y - dx)), new Segment(p, new Point(p.x + dy, p.y + dy)),
         };
     }
 }
