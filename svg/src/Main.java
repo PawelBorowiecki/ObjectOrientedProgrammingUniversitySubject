@@ -7,9 +7,9 @@ public class Main {
         //System.out.println(seg.getDistance());
         System.out.println(seg.toSvg());
 
-//        Segment[] pSeg = Segment.perpendicularTo(seg, point);
-//        System.out.println(pSeg[0].toSvg());
-//        System.out.println(pSeg[1].toSvg());
+        //Segment[] pSeg = Segment.perpendicularTo(seg, point);
+        //System.out.println(pSeg[0].toSvg());
+        //System.out.println(pSeg[1].toSvg());
 
         Polygon polygon = new Polygon(new Point[]{
                 new Point(300, 400),
