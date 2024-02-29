@@ -25,8 +25,8 @@ public class Segment {
     }
 
     public static Segment[] perpendicularTo(Segment s, Point p){
-        double dx = s.getEnd().x - s.getStart().x;
-        double dy = s.getEnd().y - s.getStart().y;
+        double dx = s.end.x - s.start.x;
+        double dy = s.end.y - s.start.y;
 
         //return new Segment(p, new Point(p.x - dx, p.y - dy));
         return new Segment[]{
