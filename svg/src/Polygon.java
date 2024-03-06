@@ -2,9 +2,16 @@ import java.util.Locale;
 
 public class Polygon {
     private Point[] points;
+    private Style style;
+
+    public Polygon(Point[] points, Style style) {
+        this.points = points;
+        this.style = style;
+    }
 
     public Polygon(Point[] points){
         this.points = points;
+        this.style = new Style();
     }
 
     public String toSvg(){
@@ -13,6 +20,6 @@ public class Polygon {
             result += String.format(Locale.ENGLISH, "%f,%f ", points[i].x, points[i].y);
         }
         //<polygon points="200,10 250,190 150,190" style="fill:lime;stroke:purple;stroke-width:3" />
-        return String.format(Locale.ENGLISH, "<polygon points=\"%s\" style=\"fill:lime;stroke:purple;stroke-width:3\" />", result);
+        return String.format(Locale.ENGLISH, "<polygon points=\"%s\" style=\"%s\" />", result, style.toSvg());
     }
 }

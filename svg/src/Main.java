@@ -11,12 +11,21 @@ public class Main {
         //System.out.println(pSeg[0].toSvg());
         //System.out.println(pSeg[1].toSvg());
 
-        Polygon polygon = new Polygon(new Point[]{
+        Polygon poly = new Polygon(new Point[]{
                 new Point(300, 400),
                 new Point(600, 100),
                 new Point(700, 900)
         });
 
+        Style style = new Style("purple", "black", 1.0);
+        Polygon polygon = new Polygon(new Point[]{
+                new Point(500, 400),
+                new Point(700, 300),
+                new Point(200, 700),
+                new Point(500, 450),
+        });
+
+        System.out.println(poly.toSvg());
         System.out.println(polygon.toSvg());
     }
 }
