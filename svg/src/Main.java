@@ -29,6 +29,8 @@ public class Main {
         System.out.println(polygon.toSvg());
 
         SvgScene scene = new SvgScene();
+        scene.addShape(poly);
+        scene.addShape(polygon);
         scene.save("/tmp/out.html");
     }
 }
