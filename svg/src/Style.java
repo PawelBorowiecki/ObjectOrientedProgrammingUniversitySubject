@@ -15,6 +15,6 @@ public class Style {
 
     public String toSvg(){
         //<polygon points="200,10 250,190 150,190" style="fill:lime;stroke:purple;stroke-width:3" />
-        return String.format(Locale.ENGLISH, "fill: %s; stroke: %s; stroke_width: %f\"", fillColor, strokeColor, strokeWidth);
+        return String.format(Locale.ENGLISH, "fill: %s; stroke: %s; stroke_width: %f\"/>", fillColor, strokeColor, strokeWidth);
     }
 }
