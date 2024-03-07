@@ -7,7 +7,7 @@ public class Style {
     public Style(){
         this("transparent", "black", 1.0);          //Domyslnie utworzy sie to
     }
-    public Style(String fillColor, String strokeColor, Double strokeWidth) {
+    public Style(String fillColor, String strokeColor, double strokeWidth) {
         this.fillColor = fillColor;
         this.strokeColor = strokeColor;
         this.strokeWidth = strokeWidth;
