@@ -20,4 +20,3 @@ import java.util.Locale;
             this.ry = ry;
         }
     }
-}
