@@ -12,27 +12,28 @@ public class Main {
         //System.out.println(pSeg[1].toSvg());
 
         Polygon poly = new Polygon(new Point[]{
-                new Point(300, 400),
-                new Point(600, 100),
-                new Point(700, 900)
+                new Point(30, 40),
+                new Point(60, 10),
+                new Point(70, 90)
         });
 
         Style style = new Style("purple", "black", 1.0);
         Polygon polygon = new Polygon(new Point[]{
-                new Point(500, 400),
-                new Point(700, 300),
-                new Point(200, 700),
-                new Point(500, 450),
+                new Point(50, 40),
+                new Point(70, 30),
+                new Point(20, 75),
+                new Point(10, 45),
         });
 
         System.out.println(poly.toSvg());
         System.out.println(polygon.toSvg());
+        //System.out.println(Polygon.square(seg, style).toSvg());
 
         SvgScene scene = new SvgScene();
         Ellipse ellipse = new Ellipse(style, new Point(100, 200), 50.5, 75.7);
         scene.addShape(poly);
         scene.addShape(polygon);
         scene.addShape(ellipse);
-        scene.save("/tmp/out.html");
+        //scene.save("/tmp/out.html");
     }
 }

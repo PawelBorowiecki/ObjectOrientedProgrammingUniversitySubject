@@ -12,6 +12,25 @@ public class Polygon extends Shape {
         this.points = points;
     }
 
+    //Zad 3 lab 2. Dopisane przeze mnie, bo nie zdazylismy na labach
+//    public static Polygon square(Segment line, Style style){
+//        Point points[] = new Point[]{
+//                line.getStart(),
+//                line.getEnd(),
+//                new Point(line.getStart().x + Polygon.perpendicularTo(line, line.getStart()), line.getStart().y + Polygon.perpendicularTo(line, line.getStart())),
+//                new Point(line.getEnd().x + Polygon.perpendicularTo(line, line.getEnd()), line.getEnd().y + Polygon.perpendicularTo(line, line.getEnd())),
+//        };
+//        Polygon poly = new Polygon(points, style);
+//        return poly;
+//    }
+//
+//    public static double perpendicularTo(Segment s, Point p){
+//        double dx = s.getEnd().x - s.getStart().x;
+//        double dy = s.getEnd().y - s.getStart().y;
+//
+//        return Math.hypot(dx, dy);
+//    }
+
     @Override
     public String toSvg(){
         String result = "";
