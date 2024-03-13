@@ -1,6 +1,6 @@
-public abstract class Shape {
+public interface Shape {
     //Nie mozna stworzyc instancji klasy abstrakcyjnej
-    public abstract Vec2 getBound();
+    Vec2 getBound();
 
-    public abstract String toSvg();
+    String toSvg(String parameters);
 }

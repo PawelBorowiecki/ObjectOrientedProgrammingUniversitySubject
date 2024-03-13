@@ -1,5 +1,5 @@
 import java.util.Locale;
-    public class Ellipse extends Shape{
+    public class Ellipse implements Shape{
         private Vec2 center;
         private double rx, ry;
         @Override
@@ -8,10 +8,11 @@ import java.util.Locale;
         }
 
         @Override
-        public String toSvg() {
+        public String toSvg(String parameters) {
             return String.format(Locale.ENGLISH,"<ellipse rx=\"%f\" ry=\"%f\" cx=\"%f\" cy=\"%f\"\n" +
-                    " />",rx,ry,center.x,center.y);
+                    " %s/>",rx,ry,center.x,center.y, parameters);
         }
+
 
         public Ellipse(Vec2 center, double rx, double ry) {
             this.center = center;

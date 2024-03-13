@@ -31,17 +31,32 @@ public class Main {
                 new Vec2(70, 90)
         }, "red");
 
-        System.out.println(poly.toSvg());
-        System.out.println(polygon.toSvg());
-        System.out.println(solidFilledPolygon.toSvg());
+        Shape polygonShape = new Polygon(new Vec2[]{
+                new Vec2(50, 40),
+                new Vec2(70, 30),
+                new Vec2(20, 75),
+                new Vec2(10, 45),
+        });
+
+        polygonShape = new SolidFillShapeDecorator(polygonShape, "red");
+
+        System.out.println(poly.toSvg(""));
+        System.out.println(polygon.toSvg(""));
+        System.out.println(solidFilledPolygon.toSvg(""));
         //System.out.println(Polygon.square(seg, style).toSvg());
 
         SvgScene scene = new SvgScene();
         Ellipse ellipse = new Ellipse(new Vec2(100, 200), 50.5, 75.7);
+        Shape ellipseShape = new Ellipse(new Vec2(100, 200), 50.5, 75.7);
+        ellipseShape = new SolidFillShapeDecorator(ellipseShape, "blue");
+
         scene.addShape(poly);
         scene.addShape(polygon);
         scene.addShape(solidFilledPolygon);
+        scene.addShape(polygonShape);
         scene.addShape(ellipse);
+        scene.addShape(ellipseShape);
+
         //scene.save("/tmp/out.html");
     }
 }
