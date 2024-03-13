@@ -1,8 +1,28 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SvgScene {
+    public List<String> defs = new ArrayList<>();
+    public static SvgScene instance;
+    private static int index = 0;
+
+    private SvgScene(){}
+    public static SvgScene getInstance(){
+        if(instance == null){
+            instance = new SvgScene();
+        }
+        return instance;
+    }
+
+    public int addFilter(String filter){
+        index++;
+        defs.add(
+                String.format(filter, index)
+        );
+        return index;
+    }
     private ArrayList<Shape> shapes = new ArrayList<>();          //Shapes zawiera referencje na liste
 
     public void addShape(Shape polygon){
@@ -22,6 +42,13 @@ public class SvgScene {
                             bounds.y
                     )
             );
+            fileWriter.write("<defs");
+            for(String def : defs){
+                fileWriter.write(
+                        String.format(def + "\n")
+                );
+            }
+            fileWriter.write("/defs>");
             for(Shape polygon : shapes)
                 fileWriter.write("\t" + polygon.toSvg("") + "\n");
             fileWriter.write("</svg>");

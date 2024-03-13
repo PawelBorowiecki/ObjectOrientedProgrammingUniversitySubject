@@ -45,8 +45,9 @@ public class Main {
         System.out.println(solidFilledPolygon.toSvg(""));
         //System.out.println(Polygon.square(seg, style).toSvg());
 
-        SvgScene scene = new SvgScene();
+        SvgScene scene = SvgScene.getInstance();
         Ellipse ellipse = new Ellipse(new Vec2(100, 200), 50.5, 75.7);
+        ellipse = new DropShadowDecorator(ellipse);
         Shape ellipseShape = new Ellipse(new Vec2(100, 200), 50.5, 75.7);
         ellipseShape = new SolidFillShapeDecorator(ellipseShape, "blue");
 
