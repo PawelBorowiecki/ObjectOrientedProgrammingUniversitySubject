@@ -12,7 +12,7 @@ public class SvgScene {
     public void save(String path){
         try{
             FileWriter fileWriter = new FileWriter(path);               //FileWriter umozliwia zapis do pliku
-            Point bounds = getBounds();
+            Vec2 bounds = getBounds();
             fileWriter.write("<HTML>");
             fileWriter.write("<body>");
             fileWriter.write(
@@ -33,16 +33,16 @@ public class SvgScene {
         }
     }
 
-    public Point getBounds(){
+    public Vec2 getBounds(){
         double x = 0, y = 0;
-        for(Point p : shapes
+        for(Vec2 p : shapes
                 .stream()
                 .map(shape -> shape.getBound())
                 .toList()){
                x = Math.max(x, p.x);
                y = Math.max(y, p.y);
         }
-        return new Point(x, y);
+        return new Vec2(x, y);
     }
 
 }

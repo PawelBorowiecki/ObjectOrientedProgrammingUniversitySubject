@@ -1,14 +1,9 @@
 import java.util.Locale;
 
 public class Polygon extends Shape {
-    private Point[] points;
+    private Vec2[] points;
 
-    public Polygon(Point[] points, Style style) {
-        super(style);
-        this.points = points;
-    }
-
-    public Polygon(Point[] points){
+    public Polygon(Vec2[] points) {
         this.points = points;
     }
 
@@ -31,23 +26,28 @@ public class Polygon extends Shape {
 //        return Math.hypot(dx, dy);
 //    }
 
+
     @Override
-    public String toSvg(){
+    public String toSvg() {
+        return this.toSvg("");
+    }
+
+    public String toSvg(String parameters){
         String result = "";
         for(int i = 0; i < this.points.length; i++){
             result += String.format(Locale.ENGLISH, "%f,%f ", points[i].x, points[i].y);
         }
         //<polygon points="200,10 250,190 150,190" style="fill:lime;stroke:purple;stroke-width:3" />
-        return String.format(Locale.ENGLISH, "<polygon points=\"%s\" style=\"%s\" />", result, style.toSvg());
+        return String.format(Locale.ENGLISH, "<polygon points=\"%s\"%s />", result, parameters);
     }
 
     @Override
-    public Point getBound(){
+    public Vec2 getBound(){
         double x = 0, y = 0;
         for(int i = 0; i < points.length; i++){
             x = Math.max(x, points[i].x);
             y = Math.max(y, points[i].y);
         }
-        return new Point(x, y);
+        return new Vec2(x, y);
     }
 }
