@@ -59,6 +59,7 @@ public class Main {
         scene.addShape(s);
 
         //scene.save("/tmp/out.html");
+        scene.save("out.html");
 
     }
 }

@@ -1,5 +1,5 @@
 public class TransformationDecorator extends ShapeDecorator {
-    private String transform;
+    private String transform ="";
 
     public static class Builder{
         String transform;
@@ -13,7 +13,7 @@ public class TransformationDecorator extends ShapeDecorator {
         }
 
         public Builder rotate(float angle, Vec2 middle){
-            this.transform += String.format("translate(%f %f)", angle, middle.x, middle.y);
+            this.transform += String.format("translate(%f %f %f)", angle, middle.x, middle.y);
             return this;
         }
 
