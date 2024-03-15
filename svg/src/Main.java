@@ -1,63 +1,64 @@
 public class Main {
     public static void main(String[] args) {
-        Vec2 point = new Vec2(20.4, 50.5);
-        //System.out.println(point.x + "," + point.y);
+        /*SolidFilledPolygon poly = new SolidFilledPolygon(new Vec2[]{
+                new Vec2(30, 70),
+                new Vec2(60, 80),
+                new Vec2(50, 40)
+        },"green");
+//        Polygon polygon = new Polygon(new Vec2[]{
+//                new Vec2(500, 100),
+//                new Vec2(220, 20),
+//                new Vec2(400, 25),
+//                new Vec2(70, 33),
+//        });
+//        System.out.println(polygon.toSvg());
+//        System.out.println(poly.toSvg());
+        Scene scene = new Scene();
+//        Ellipse ellipse = new Ellipse(new Vec2(100, 200), 50.5, 75.7);
+        scene.add(poly);
+//        scene.add(poly);
+//        scene.add(ellipse);
 
-        Segment seg = new Segment(point, new Vec2(10.7, 80.6));
-        //System.out.println(seg.getDistance());
-        System.out.println(seg.toSvg());
+        scene.save("/tmp/out.html");
 
-        //Segment[] pSeg = Segment.perpendicularTo(seg, point);
-        //System.out.println(pSeg[0].toSvg());
-        //System.out.println(pSeg[1].toSvg());
-
-        Polygon poly = new Polygon(new Vec2[]{
-                new Vec2(30, 40),
-                new Vec2(60, 10),
-                new Vec2(70, 90)
+         */
+        Shape polygon = new Polygon(new Vec2[]{
+                new Vec2(500, 100),
+                new Vec2(220, 20),
+                new Vec2(400, 25),
+                new Vec2(70, 33),
         });
+        //polygon = new SolidFillShapeDecorator(polygon, "red");
 
-        //Style style = new Style("purple", "black", 1.0);
-        Polygon polygon = new Polygon(new Vec2[]{
-                new Vec2(50, 40),
-                new Vec2(70, 30),
-                new Vec2(20, 75),
-                new Vec2(10, 45),
-        });
+        Shape ellipse = new Ellipse(new Vec2(100, 200), 50.5, 75.7);
+        ellipse = new SolidFillShapeDecorator(ellipse,"blue");
 
-        SolidFilledPolygon solidFilledPolygon = new SolidFilledPolygon(new Vec2[]{
-                new Vec2(30, 40),
-                new Vec2(60, 10),
-                new Vec2(70, 90)
-        }, "red");
+        ellipse = new TransformationDecorator.Builder()
+                .rotate(1, new Vec2(0, 0))
+                .build(ellipse);
 
-        Shape polygonShape = new Polygon(new Vec2[]{
-                new Vec2(50, 40),
-                new Vec2(70, 30),
-                new Vec2(20, 75),
-                new Vec2(10, 45),
-        });
+        ellipse = new DropShadowDecorator(ellipse);
 
-        polygonShape = new SolidFillShapeDecorator(polygonShape, "red");
+        polygon = new GradientFillShapeDecorator.Builder()
+                .setShape(polygon)
+                .addStop(0, "red")
+                .addStop(0.3, "white")
+                .addStop(1, "cyan")
+                .build();
 
-        System.out.println(poly.toSvg(""));
-        System.out.println(polygon.toSvg(""));
-        System.out.println(solidFilledPolygon.toSvg(""));
-        //System.out.println(Polygon.square(seg, style).toSvg());
+        TransformationDecorator.Builder builder = new TransformationDecorator.Builder();
+        Shape s = builder
+                .rotate(50, new Vec2(0, 0))
+                .translate(new Vec2(50, 60))
+                .scale(new Vec2(1, 1.5))
+                .build(new Ellipse(new Vec2(40, 50), 20, 40));
 
         SvgScene scene = SvgScene.getInstance();
-        Ellipse ellipse = new Ellipse(new Vec2(100, 200), 50.5, 75.7);
-        ellipse = new DropShadowDecorator(ellipse);
-        Shape ellipseShape = new Ellipse(new Vec2(100, 200), 50.5, 75.7);
-        ellipseShape = new SolidFillShapeDecorator(ellipseShape, "blue");
-
-        scene.addShape(poly);
         scene.addShape(polygon);
-        scene.addShape(solidFilledPolygon);
-        scene.addShape(polygonShape);
         scene.addShape(ellipse);
-        scene.addShape(ellipseShape);
+        scene.addShape(s);
 
         //scene.save("/tmp/out.html");
+
     }
 }

@@ -17,9 +17,8 @@ public class SvgScene {
     }
 
     public int addFilter(String filter){
-        index++;
         defs.add(
-                String.format(filter, index)
+                String.format(filter, ++index)
         );
         return index;
     }

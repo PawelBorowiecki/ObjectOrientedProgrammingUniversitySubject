@@ -9,8 +9,7 @@ import java.util.Locale;
 
         @Override
         public String toSvg(String parameters) {
-            return String.format(Locale.ENGLISH,"<ellipse rx=\"%f\" ry=\"%f\" cx=\"%f\" cy=\"%f\"\n" +
-                    " %s/>",rx,ry,center.x,center.y, parameters);
+            return String.format(Locale.ENGLISH,"<ellipse rx=\"%f\" ry=\"%f\" cx=\"%f\" cy=\"%f\" %s/>",rx,ry,center.x,center.y, parameters);
         }
 
 

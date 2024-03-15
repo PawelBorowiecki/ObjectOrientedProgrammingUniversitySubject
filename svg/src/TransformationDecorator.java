@@ -1,4 +1,4 @@
-public class TransformationDecorator implements Shape {
+public class TransformationDecorator extends ShapeDecorator {
     private String transform;
 
     public static class Builder{
@@ -12,8 +12,8 @@ public class TransformationDecorator implements Shape {
             return this;
         }
 
-        public Builder rotate(Vec2 rotator){
-            this.transform += String.format("translate(%f %f)", rotator.x, rotator.y);
+        public Builder rotate(float angle, Vec2 middle){
+            this.transform += String.format("translate(%f %f)", angle, middle.x, middle.y);
             return this;
         }
 
@@ -33,7 +33,6 @@ public class TransformationDecorator implements Shape {
 
     @Override
     public String toSvg(String parameters) {
-        String t = String.format("%s transform= ", parameters);
-        return super.toSvg(t + parameters);
+        return super.toSvg(String.format("%s transform=\"%s\" ", parameters, this.transform));
     }
 }

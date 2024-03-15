@@ -1,5 +1,4 @@
 import java.util.Locale;
-
 public class Segment {
     private Vec2 start;
     private Vec2 end;
